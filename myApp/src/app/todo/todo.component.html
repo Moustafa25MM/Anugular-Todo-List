@@ -1,0 +1,30 @@
+<section style="width: 75%; padding-left: 170px;">
+  <div style="text-align: right;">
+    <div class="card" style="border-radius: 10px; border: 10px; background-color: bisque ;  text-align: center;">
+      <p style="font-size: larger;">
+        <i class="fa fa-book"></i>
+        <u>{{title}}</u>
+      </p>
+      <input type="text" placeholder="Add new TODO" [(ngModel)]="title">
+      <div>
+        <button (click)="addTodo()" type="button" style="color: red; width: 50px ;height: 50px;">Add</button>
+      </div>
+    </div>
+  </div>
+  <hr>
+  <div class="list" >
+    <ul *ngFor="let todo of todos">
+      <li class="list1">
+        <input type="checkbox" [checked]="todo.status" (click)="changeStatus(todo.id)" />
+      </li>
+      <li class="list2" [ngStyle]="{'text-decoration':todo.status ? 'line-through' : 'none' }">
+        <p>{{todo.title}}</p>
+      </li>
+      <li class="list3">
+        <a (click)="deleteTodo(todo.id)" class="text-muted" title="Delete todo">
+          <p><i class="bi bi-file-earmark-x-fill"></i>delete todo</p>
+        </a>
+      </li>
+    </ul>
+  </div>
+</section>
